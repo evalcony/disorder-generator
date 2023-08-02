@@ -18,3 +18,7 @@
 - python3 main.py -s '你好，世界'
 
 - python3 main.py -f '/your/file/path/name'
+
+### 其他
+
+想要调整乱序区块长度，修改 main.py 中的 seg_len 值即可。默认是4。
