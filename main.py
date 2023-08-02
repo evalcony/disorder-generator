@@ -3,10 +3,12 @@ import argparse
 
 # a list of common signals
 sig_set = set([
-    ',','.','!','#',':','\'','"','(',')','@','<','>','~','，','。','《','》','！','、','「','」','[',']','-','+','*','/','&','$','%',' ',
+    ',','.','!','#',':','\'','"','(',')','@','<','>','~','，','。','？','《','》','！','、','「','」','[',']','-','+','*','/','&','$','%',' ','“','”',
     '0','1','2','3','4','5','6','7','8','9','的',
     'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'
 ])
+seg_len = 4
+
 
 def work(args):
     if args.s != '':
@@ -44,12 +46,23 @@ def seperate(sentence):
     return res
 
 def make_disorder(word_arr):
+    if len(word_arr) == 1:
+        return word_arr[0]
     if len(word_arr) == 2:
         return word_arr[1]+word_arr[0]
-    
-    random.shuffle(word_arr)
-    # print(word_arr)
-    return ''.join(word_arr)
+    pre = 0
+    res = ''
+    for i in range(len(word_arr)):
+        if i != 0 and i % seg_len == 0:
+            s = word_arr[pre:i+1]
+            random.shuffle(s)
+            res += ''.join(s)
+            pre = i+1
+    if pre != len(word_arr)+1:
+        s = word_arr[pre:len(word_arr)]
+        random.shuffle(s)
+        res += ''.join(s)
+    return res
         
 
 def read_file(filename):
