@@ -12,7 +12,7 @@ sig_set = set([
 ])
 
 # 乱序长度
-seg_len = 4
+seg_len = 5
 
 
 def work(args):
