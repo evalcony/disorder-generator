@@ -5,8 +5,16 @@
 
 将中文字符顺序打乱。
 
+可接受一句话，或者一个文件。
+
 对数字、英文，不影响。例如
 ```
 输入 hello, world. 你好,世界
 输出 hello, world. 好你,界世
 ```
+
+### 使用方法
+
+- python3 main.py -s '你好，世界'
+
+- python3 main.py -f '/your/file/path/name'
